@@ -122,13 +122,13 @@
 
 			var loaderParent = document.querySelector("#game" + index);
 
-			var container = loaderParent.querySelectorAll(".unity-container");
-			var canvas = loaderParent.querySelectorAll(".unity-canvas");
-			var loadingBar = loaderParent.querySelectorAll(".unity-loading-bar");
-			var progressBarFull = loaderParent.querySelectorAll(".unity-progress-bar-full");
-			var fullscreenButton = loaderParent.querySelectorAll(".unity-fullscreen-button");
-			var mobileWarning = loaderParent.querySelectorAll(".unity-mobile-warning");
-			var gameStartButton = loaderParent.querySelectorAll(".startGameButton");
+			var container = loaderParent.querySelectorAll(".unity-container")[0];
+			var canvas = loaderParent.querySelectorAll(".unity-canvas")[0];
+			var loadingBar = loaderParent.querySelectorAll(".unity-loading-bar")[0];
+			var progressBarFull = loaderParent.querySelectorAll(".unity-progress-bar-full")[0];
+			var fullscreenButton = loaderParent.querySelectorAll(".unity-fullscreen-button")[0];
+			var mobileWarning = loaderParent.querySelectorAll(".unity-mobile-warning")[0];
+			var gameStartButton = loaderParent.querySelectorAll(".startGameButton")[0];
 
 
 			// By default Unity keeps WebGL canvas render target size matched with
