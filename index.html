@@ -64,11 +64,43 @@
 	<script>
 
 		var gameNames = [
+			"BouncingPoby_v01",
 			"BouncingPoby_v01"
 		]
 
 
+		// CreatingGame areas
+		for (let index = 0; index < gameNames.length; index++) {
+			const element = gameNames[index];
 
+			document.write('	<div id=\"game' + index + '\" class=\"gameContainer\">\n');
+			document.write('		<div class=\"startGameButton\">\n');
+			document.write('			<div>Click Me!</div>\n');
+			document.write('		</div>\n');
+			document.write('		<div class=\"unity-container\" class=\"unity-desktop\">\n');
+			document.write('			<canvas class=\"unity-canvas\" width=960 height=600></canvas>\n');
+			document.write('			<div class=\"unity-loading-bar\">\n');
+			document.write('				<div class=\"unity-logo\"></div>\n');
+			document.write('				<div class=\"unity-progress-bar-empty\">\n');
+			document.write('					<div class=\"unity-progress-bar-full\"></div>\n');
+			document.write('				</div>\n');
+			document.write('			</div>\n');
+			document.write('			<div class=\"unity-mobile-warning\">\n');
+			document.write('				WebGL builds are not supported on mobile devices.\n');
+			document.write('			</div>\n');
+			document.write('			<div class=\"unity-footer\">\n');
+			document.write('				<div class=\"unity-webgl-logo\"></div>\n');
+			document.write('				<div class=\"unity-fullscreen-button\"></div>\n');
+			document.write('				<div class=\"unity-build-title\">' + element + '</div>\n');
+			document.write('			</div>\n');
+			document.write('		</div>\n');
+			document.write('	</div>');
+		}
+
+
+
+
+		// Loading Game Areas
 		for (let index = 0; index < gameNames.length; index++) {
 
 			const element = gameNames[index];
