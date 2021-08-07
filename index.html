@@ -157,7 +157,7 @@
 			loadingBar.style.display = "block";
 
 
-			createUnityInstance(canvas, config, (progress) => {
+			var loadingEvent = createUnityInstance(canvas, config, (progress) => {
 				progressBarFull.style.width = 100 * progress + "%";
 			}).then((unityInstance) => {
 				loadingBar.style.display = "none";
@@ -168,12 +168,13 @@
 				alert(message);
 			});
 
+			var script = document.createElement("script");
+			script.src = loaderUrl;
+			script.onload = loadingEvent;
+			document.body.appendChild(script);
 		};
 
 
-		var script = document.createElement("script");
-		script.src = loaderUrl;
-		document.body.appendChild(script);
 
 
 
