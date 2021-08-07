@@ -11,7 +11,7 @@
 		.gameContainer {
 			width: 960px;
 			height: 600px;
-			margin: 150px 0 ;
+			margin: 150px 0;
 			margin-left: calc(50% - (960px/2));
 		}
 
@@ -152,6 +152,7 @@
 			loadingBar.style.display = "block";
 
 			var script = document.createElement("script");
+			script.id = "script" + index;
 			script.src = loaderUrl;
 			var loadEvent = () => {
 				createUnityInstance(canvas, config, (progress) => {
@@ -167,6 +168,7 @@
 				gameStartButton.style.display = "none";
 			};
 			gameStartButton.onclick = loadEvent;
+			console.log(gameStartButton.parentElement.id);
 			document.body.appendChild(script);
 		}
 
