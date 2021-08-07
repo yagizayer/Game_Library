@@ -1,7 +1,7 @@
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild/
+# [Bb]uild/ #closed to show game builds
 [Bb]uilds/
 Assets/AssetStoreTools*
 
