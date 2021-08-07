@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Game Library</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+        .gameContainer {
+            width: 960px;
+            height: 600px;
+            margin-left: calc(50% - (960px/2));
+        }
+
+        .startGameButton {
+            width: 33%;
+            height: 100px;
+            margin-left: 33%;
+            margin-top: 40%;
+            font: "Arial, Helvetica, sans-serif";
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game1" class="gameContainer">
+        <!-- <div class="startGameButton">StartGame</div> -->
+        <div class="unity-container" class="unity-desktop">
+            <canvas class="unity-canvas" width=960 height=600></canvas>
+            <div class="unity-loading-bar">
+                <div class="unity-logo"></div>
+                <div class="unity-progress-bar-empty">
+                    <div class="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div class="unity-mobile-warning">
+                WebGL builds are not supported on mobile devices.
+            </div>
+            <div class="unity-footer">
+                <div class="unity-webgl-logo"></div>
+                <div class="unity-fullscreen-button"></div>
+                <div class="unity-build-title">BouncingPoby_v01</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var gameNames = [
+            "BouncingPoby_v01"
+        ]
+
+        gameNames.forEach((element, index) => {
+
+
+            var buildUrl = element + "/Build";
+            var loaderUrl = buildUrl + "/" + element + ".loader.js";
+            var config = {
+                dataUrl: buildUrl + "/" + element + ".data",
+                frameworkUrl: buildUrl + "/" + element + ".framework.js",
+                codeUrl: buildUrl + "/" + element + ".wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "DefaultCompany",
+                productName: element,
+                productVersion: "0.1",
+            };
+
+            var container = document.querySelector("#game" + index).querySelector(".unity-container");
+            var canvas = document.querySelector("#game" + index).querySelector(".unity-canvas");
+            var loadingBar = document.querySelector("#game1").querySelector(".unity-loading-bar");
+            var progressBarFull = document.querySelector("#game" + index).querySelector(".unity-progress-bar-full");
+            var fullscreenButton = document.querySelector("#game" + index).querySelector(".unity-fullscreen-button");
+            var mobileWarning = document.querySelector("#game" + index).querySelector(".unity-mobile-warning");
+
+
+            // By default Unity keeps WebGL canvas render target size matched with
+            // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+            // Set this to false if you want to decouple this synchronization from
+            // happening inside the engine, and you would instead like to size up
+            // the canvas DOM size and WebGL render target sizes yourself.
+            // config.matchWebGLToCanvasSize = false;
+
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                container.className = "unity-mobile";
+                // Avoid draining fillrate performance on mobile devices,
+                // and default/override low DPI mode on mobile browsers.
+                config.devicePixelRatio = 1;
+                mobileWarning.style.display = "block";
+                setTimeout(() => {
+                    mobileWarning.style.display = "none";
+                }, 5000);
+            } else {
+                canvas.style.width = "960px";
+                canvas.style.height = "600px";
+            }
+            loadingBar.style.display = "block";
+
+            var script = document.createElement("script");
+            script.src = loaderUrl;
+            var loadEvent = () => {
+                createUnityInstance(canvas, config, (progress) => {
+                    progressBarFull.style.width = 100 * progress + "%";
+                }).then((unityInstance) => {
+                    loadingBar.style.display = "none";
+                    fullscreenButton.onclick = () => {
+                        unityInstance.SetFullscreen(1);
+                    };
+                }).catch((message) => {
+                    alert(message);
+                });
+            };
+            document.body.appendChild(script);
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
