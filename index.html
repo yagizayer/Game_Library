@@ -7,6 +7,7 @@
 	<title>Unity Game Library</title>
 	<link rel="shortcut icon" href="TemplateData/favicon.ico">
 	<link rel="stylesheet" href="TemplateData/style.css">
+	<script></script>
 	<style>
 		.gameContainer {
 			width: 960px;
@@ -157,6 +158,8 @@
 			loadingBar.style.display = "block";
 
 
+			var script = document.createElement("script");
+			script.src = loaderUrl;
 			var loadingEvent = createUnityInstance(canvas, config, (progress) => {
 				progressBarFull.style.width = 100 * progress + "%";
 			}).then((unityInstance) => {
@@ -168,8 +171,6 @@
 				alert(message);
 			});
 
-			var script = document.createElement("script");
-			script.src = loaderUrl;
 			script.onload = loadingEvent;
 			document.body.appendChild(script);
 		};
