@@ -166,9 +166,9 @@
 					alert(message);
 				});
 				gameStartButton.style.display = "none";
+				console.log(gameStartButton.parentElement.id);
 			};
 			gameStartButton.onclick = loadEvent;
-			console.log(gameStartButton.parentElement.id);
 			document.body.appendChild(script);
 		}
 
