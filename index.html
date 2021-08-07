@@ -77,9 +77,9 @@
 			const element = gameNames[index];
 
 			document.write('	<div id=\"game' + index + '\" class=\"gameContainer\">\n');
-			document.write('		<div class=\"startGameButton\">\n');
+			document.write('		<button onclick=\"loadGame(' + index + ')\" class=\"startGameButton\">\n');
 			document.write('			<div>Click Me!</div>\n');
-			document.write('		</div>\n');
+			document.write('		</button>\n');
 			document.write('		<div class=\"unity-container\" class=\"unity-desktop\">\n');
 			document.write('			<canvas class=\"unity-canvas\" width=960 height=600></canvas>\n');
 			document.write('			<div class=\"unity-loading-bar\">\n');
@@ -104,7 +104,10 @@
 
 
 		// Loading Game
-		for (let index = 0; index < gameNames.length; index++) {
+
+
+		function loadGame(index) {
+			gameStartButton.style.display = "none";
 
 			const element = gameNames[index];
 
@@ -128,7 +131,6 @@
 			var progressBarFull = loaderParent.querySelectorAll(".unity-progress-bar-full")[0];
 			var fullscreenButton = loaderParent.querySelectorAll(".unity-fullscreen-button")[0];
 			var mobileWarning = loaderParent.querySelectorAll(".unity-mobile-warning")[0];
-			var gameStartButton = loaderParent.querySelectorAll(".startGameButton")[0];
 
 
 			// By default Unity keeps WebGL canvas render target size matched with
@@ -153,26 +155,24 @@
 			}
 			loadingBar.style.display = "block";
 
-			var script = document.createElement("script");
-			script.id = "script" + index;
-			script.src = loaderUrl;
-			var loadEvent = () => {
-				createUnityInstance(canvas, config, (progress) => {
-					progressBarFull.style.width = 100 * progress + "%";
-				}).then((unityInstance) => {
-					loadingBar.style.display = "none";
-					fullscreenButton.onclick = () => {
-						unityInstance.SetFullscreen(1);
-					};
-				}).catch((message) => {
-					alert(message);
-				});
-				gameStartButton.style.display = "none";
-				console.log(gameStartButton.parentElement.id);
-			};
-			gameStartButton.onclick = loadEvent;
-			document.body.appendChild(script);
-		}
+
+			createUnityInstance(canvas, config, (progress) => {
+				progressBarFull.style.width = 100 * progress + "%";
+			}).then((unityInstance) => {
+				loadingBar.style.display = "none";
+				fullscreenButton.onclick = () => {
+					unityInstance.SetFullscreen(1);
+				};
+			}).catch((message) => {
+				alert(message);
+			});
+		};
+
+
+		var script = document.createElement("script");
+		script.src = loaderUrl;
+		document.body.appendChild(script);
+
 
 
 
