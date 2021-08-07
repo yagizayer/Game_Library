@@ -120,13 +120,15 @@
 				productVersion: "0.1",
 			};
 
-			var container = document.querySelectorAll("#game" + index + " .unity-container");
-			var canvas = document.querySelectorAll("#game" + index + " .unity-canvas");
-			var loadingBar = document.querySelectorAll("#game" + index + " .unity-loading-bar");
-			var progressBarFull = document.querySelectorAll("#game" + index + " .unity-progress-bar-full");
-			var fullscreenButton = document.querySelectorAll("#game" + index + " .unity-fullscreen-button");
-			var mobileWarning = document.querySelectorAll("#game" + index + " .unity-mobile-warning");
-			var gameStartButton = document.querySelectorAll("#game" + index + " .startGameButton");
+			var loaderParent = document.querySelector("#game" + index);
+
+			var container = loaderParent.querySelectorAll(".unity-container");
+			var canvas = loaderParent.querySelectorAll(".unity-canvas");
+			var loadingBar = loaderParent.querySelectorAll(".unity-loading-bar");
+			var progressBarFull = loaderParent.querySelectorAll(".unity-progress-bar-full");
+			var fullscreenButton = loaderParent.querySelectorAll(".unity-fullscreen-button");
+			var mobileWarning = loaderParent.querySelectorAll(".unity-mobile-warning");
+			var gameStartButton = loaderParent.querySelectorAll(".startGameButton");
 
 
 			// By default Unity keeps WebGL canvas render target size matched with
