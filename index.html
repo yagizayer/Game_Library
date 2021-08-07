@@ -16,21 +16,23 @@
 		}
 
 		.startGameButton {
-			width: 100%;
-			height: 100%;
+			width: 960px;
+			height: 600px;
 			background-color: rgba(255, 255, 255, .7);
+			position: absolute;
+			z-index: 10;
 		}
 
 		.startGameButton div {
 			width: 33%;
-			height: 100px;
 			margin-left: 33%;
-			margin-top: 40%;
-			font: 15px Arial, sans-serif;
+			margin-top: 300px;
+			font: bold 15px Arial, sans-serif;
 			background: #231F20;
 			border-radius: 5px;
 			text-align: center;
 			padding: 10px 0;
+			color: white;
 		}
 	</style>
 </head>
@@ -127,6 +129,7 @@
 				}).catch((message) => {
 					alert(message);
 				});
+				gameStartButton.style.display = "none";
 			};
 			gameStartButton.onclick = loadEvent;
 			document.body.appendChild(script);
