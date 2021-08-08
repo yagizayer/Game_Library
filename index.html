@@ -10,11 +10,15 @@
 	<script></script>
 	<style>
 		.gameContainer {
+			width: 960px;
+			height: 600px;
 			margin: 150px 0;
 			margin-left: calc(50% - (960px/2));
 		}
 
 		.startGameButton {
+			width: 960px;
+			height: 600px;
 			background-color: rgba(255, 255, 255, .7);
 			position: absolute;
 			z-index: 10;
@@ -76,8 +80,8 @@
 		for (let index = 0; index < gameNames.length; index++) {
 			const element = gameNames[index];
 
-			document.write('	<div id=\"game' + index + '\" width=' + element.width + ' height=' + element.height + ' class=\"gameContainer\">\n');
-			document.write('		<button onclick=\"loadGame(' + index + ')\" width=' + element.width + ' height=' + element.height + ' class=\"startGameButton\">\n');
+			document.write('	<div id=\"game' + index + '\" style=\"width: ' + element.width + 'px;height: ' + element.height + 'px;\" class=\"gameContainer\">\n');
+			document.write('		<button onclick=\"loadGame(' + index + ')\" style=\"width: ' + element.width + 'px;height: ' + element.height + 'px;\" class=\"startGameButton\">\n');
 			document.write('			<div>Click Me!</div>\n');
 			document.write('		</button>\n');
 			document.write('		<div class=\"unity-container\" class=\"unity-desktop\">\n');
