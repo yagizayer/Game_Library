@@ -70,8 +70,9 @@
 		// and files inside "Build" folder MUST be exactly same name as game
 		// Only add the Game Name here
 		var gameNames = [
-			"BouncingPoby_v01",
-			"Feeding_Poby_v01"
+			{ name: "BouncingPoby_v01", width: 960, height: 600 },
+			{ name: "Feeding_Poby_v01", width: 426, height: 900 },
+
 		]
 
 
@@ -84,7 +85,7 @@
 			document.write('			<div>Click Me!</div>\n');
 			document.write('		</button>\n');
 			document.write('		<div class=\"unity-container\" class=\"unity-desktop\">\n');
-			document.write('			<canvas class=\"unity-canvas\" width=960 height=600></canvas>\n');
+			document.write('			<canvas class=\"unity-canvas\" width=' + element.width + ' height=' + element.height + '></canvas>\n');
 			document.write('			<div class=\"unity-loading-bar\">\n');
 			document.write('				<div class=\"unity-logo\"></div>\n');
 			document.write('				<div class=\"unity-progress-bar-empty\">\n');
@@ -97,7 +98,7 @@
 			document.write('			<div class=\"unity-footer\">\n');
 			document.write('				<div class=\"unity-webgl-logo\"></div>\n');
 			document.write('				<div class=\"unity-fullscreen-button\"></div>\n');
-			document.write('				<div class=\"unity-build-title\">' + element + '</div>\n');
+			document.write('				<div class=\"unity-build-title\">' + element.name + '</div>\n');
 			document.write('			</div>\n');
 			document.write('		</div>\n');
 			document.write('	</div>');
@@ -111,7 +112,7 @@
 
 		function loadGame(index) {
 
-			const element = gameNames[index];
+			const element = gameNames[index].name;
 
 			var buildUrl = element + "/Build";
 			var loaderUrl = buildUrl + "/" + element + ".loader.js";
