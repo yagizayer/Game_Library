@@ -40,42 +40,26 @@
 </head>
 
 <body>
-	<!-- <div id="game0" class="gameContainer">
-		<div class="startGameButton">
-			<div>Click Me!</div>
-		</div>
-		<div class="unity-container" class="unity-desktop">
-			<canvas class="unity-canvas" width=960 height=600></canvas>
-			<div class="unity-loading-bar">
-				<div class="unity-logo"></div>
-				<div class="unity-progress-bar-empty">
-					<div class="unity-progress-bar-full"></div>
-				</div>
-			</div>
-			<div class="unity-mobile-warning">
-				WebGL builds are not supported on mobile devices.
-			</div>
-			<div class="unity-footer">
-				<div class="unity-webgl-logo"></div>
-				<div class="unity-fullscreen-button"></div>
-				<div class="unity-build-title">BouncingPoby_v01</div>
-			</div>
-		</div>
-	</div> -->
 
 	<script>
 
-		// Template Data folder and index.html(unity's creation) will be deleted
 		// Build files path MUST be like : Example_Game_Name_v03/Build
 		// and files inside "Build" folder MUST be exactly same name as game
 		// Only add the Game Name here
 		var gameNames = [
-			"Fps_Reflex_Game_v03",
-			"TempleOfArtemis",
-			"HealthRacer",
-			"RollerCoasterSimulator",
-			"PizzaTime",
-		]
+			"Fps Reflex Game",
+			"Temple Of Artemis",
+			"Health Racer",
+			"Roller Coaster Simulator",
+			"Pizza Time!",
+		];
+		var gameBuildPaths = [
+			"Fps_Reflex_Game_v03/Build/",
+			"Builds/Build/",
+			"HealthRacer/Build/",
+			"RollerCoasterSimulator/Build/",
+			"PizzaTime/Build/",
+		];
 
 
 		// CreatingGame areas
@@ -107,25 +91,23 @@
 		}
 
 
-
-
 		// Loading Game
-
-
 		function loadGame(index) {
 
 			const element = gameNames[index];
+			const buildPath = gameBuildPaths[index];
+
 
 			var buildUrl = element + "/Build";
-			var loaderUrl = buildUrl + "/" + element + ".loader.js";
+			var loaderUrl = buildPath + ".loader.js";
 			var config = {
-				dataUrl: buildUrl + "/" + element + ".data",
-				frameworkUrl: buildUrl + "/" + element + ".framework.js",
-				codeUrl: buildUrl + "/" + element + ".wasm",
+				dataUrl: buildPath + ".data",
+				frameworkUrl: buildPath + ".framework.js",
+				codeUrl: buildPath + ".wasm",
 				streamingAssetsUrl: "StreamingAssets",
-				companyName: "DefaultCompany",
+				companyName: "YagizAYER",
 				productName: element,
-				productVersion: "0.1",
+				productVersion: "1.0",
 			};
 
 			var loaderParent = document.querySelector("#game" + index);
@@ -178,12 +160,6 @@
 			};
 			document.body.appendChild(script);
 		};
-
-
-
-
-
-
 
 
 	</script>
